@@ -52,7 +52,9 @@ public class RequestDetailActivity extends RequestBaseActivity {
         RequestDto requestDto = requestDtoList.get(index);
 
         tv_title.setText(requestDto.getServicetype());
-        tv_date.setText(""+requestDto.getUpdate_At());
+        String date = "Post on: "+requestDto.getCreate_At();
+        if (requestDto.getUpdate_At() != null) date += "\nUpdated on: " + requestDto.getUpdate_At();
+        tv_date.setText(date);
         UserDto userDto = requestDto.getUserDto();
         tv_name.setText(userDto.getFirstname() + " " + userDto.getLastname());
         String location = userDto.getStreetname() + ", " + userDto.getCity() + ", " + userDto.getState() + ", " + userDto.getZipcode();
