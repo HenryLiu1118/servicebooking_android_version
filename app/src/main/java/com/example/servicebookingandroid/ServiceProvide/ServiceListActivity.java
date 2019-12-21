@@ -45,16 +45,17 @@ public class ServiceListActivity extends ServiceBaseActivity {
         page = 0;
         size = 0;
         callAPI();
-        setButton();
     }
 
     public void onPrev(View view) {
+        if (page <= 0) return;
         page--;
         callAPI();
         setButton();
     }
 
     public void onNext(View view) {
+        if (page >= (int)(Math.ceil((double)size/limit)) - 1) return;
         page++;
         callAPI();
         setButton();
@@ -99,6 +100,7 @@ public class ServiceListActivity extends ServiceBaseActivity {
                 serviceDtos.addAll(response.body().getServiceDtoList());
                 serviceAdapter.notifyDataSetChanged();
                 size = response.body().getSize();
+                setButton();
                 tv_listView.setText("List of Services: " + size + " total");
             }
 

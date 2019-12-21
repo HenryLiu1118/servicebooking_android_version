@@ -1,6 +1,7 @@
 package com.example.servicebookingandroid.Request;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -41,16 +42,17 @@ public class RequestListActivity extends RequestBaseActivity {
         page = 0;
         size = 0;
         callAPI();
-        setButton();
     }
 
     public void onPrev(View view) {
+        if (page <= 0) return;
         page--;
         callAPI();
         setButton();
     }
 
     public void onNext(View view) {
+        if (page >= (int)(Math.ceil((double)size/limit)) - 1) return;
         page++;
         callAPI();
         setButton();
@@ -102,6 +104,7 @@ public class RequestListActivity extends RequestBaseActivity {
                 requestDtoList.addAll(response.body().getRequestDtoList());
                 requestsAdapter.notifyDataSetChanged();
                 size = response.body().getSize();
+                setButton();
                 tv_listView.setText("List of Requests: " + size + " total");
             }
 
