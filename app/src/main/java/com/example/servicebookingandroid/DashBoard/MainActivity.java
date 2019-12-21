@@ -18,7 +18,9 @@ import com.example.servicebookingandroid.Admin.UserListActivity;
 import com.example.servicebookingandroid.Auth.AuthBaseActivity;
 import com.example.servicebookingandroid.Model.UserDto;
 import com.example.servicebookingandroid.R;
+import com.example.servicebookingandroid.Request.RequestBaseActivity;
 import com.example.servicebookingandroid.Request.RequestMainActivity;
+import com.example.servicebookingandroid.ServiceProvide.ServiceBaseActivity;
 import com.example.servicebookingandroid.ServiceProvide.ServiceDetailActivity;
 import com.example.servicebookingandroid.ServiceProvide.ServiceMainActivity;
 
@@ -144,8 +146,11 @@ public class MainActivity extends DashBoardBaseActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //authService
-                        AuthBaseActivity.token = null;
-                        AuthBaseActivity.user = null;
+                        AuthBaseActivity.clearAuthData();
+                        //RequestService
+                        RequestBaseActivity.clearRequestData();
+                        //ServiceProvideService
+                        ServiceBaseActivity.clearServiceData();
                         CheckUserToken();
                     }
                 });

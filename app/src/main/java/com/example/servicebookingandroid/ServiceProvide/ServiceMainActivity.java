@@ -67,7 +67,7 @@ public class ServiceMainActivity extends ServiceBaseActivity {
 
                 List<ServiceType> serviceTypes = response.body();
                 List<String> ServiceTypeNames = new ArrayList<>();
-                ServiceTypeNames.add(selectedServiceType);
+                ServiceTypeNames.add("All");
                 for (ServiceType serviceType : serviceTypes) {
                     ServiceTypeNames.add(serviceType.getName());
                 }
@@ -95,7 +95,7 @@ public class ServiceMainActivity extends ServiceBaseActivity {
 
                 List<Language> languages = response.body();
                 List<String> languageNames = new ArrayList<>();
-                languageNames.add(selectedLanguage);
+                languageNames.add("All");
                 for (Language role : languages) {
                     languageNames.add(role.getName());
                 }

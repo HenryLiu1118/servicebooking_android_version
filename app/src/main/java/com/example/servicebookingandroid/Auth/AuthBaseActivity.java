@@ -14,6 +14,10 @@ public class AuthBaseActivity extends BaseActivity {
     public static String token = null;
     public static UserDto user = null;
 
+    public static void clearAuthData() {
+        token = null;
+        user = null;
+    }
     @Override
     protected void onStart() {
         super.onStart();

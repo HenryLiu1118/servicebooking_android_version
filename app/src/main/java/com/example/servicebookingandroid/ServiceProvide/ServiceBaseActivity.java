@@ -18,6 +18,13 @@ public class ServiceBaseActivity extends BaseActivity {
     public static String selectedLanguage = "All";
     public static String selectedServiceType = "All";
 
+    public static void clearServiceData() {
+        serviceDtos = new ArrayList<>();
+        myService = null;
+        selectedLanguage = "All";
+        selectedServiceType = "All";
+    }
+
     public void CheckUserToken() {
         if (AuthBaseActivity.user == null) {
             startActivity(new Intent(this, LoginActivity.class));
