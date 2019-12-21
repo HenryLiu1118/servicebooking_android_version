@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:id="@+id/linearLayout"
+    tools:context=".Request.Comment.CommentFormActivity">
+
+    <TextView
+        android:id="@+id/tv_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        android:text="You have already commentted on this request"></TextView>
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textSize="15dp"
+        android:background="#FDE2C1"
+        android:visibility="gone"
+        ></TextView>
+
+    <EditText
+        android:id="@+id/ed_text"
+        android:layout_width="match_parent"
+        android:hint="Leave your comment here"
+        android:layout_height="150dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        android:background="#FDE2C1"></EditText>
+
+    <Button
+        android:id="@+id/bt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:onClick="onSubmit"
+        android:visibility="gone"
+        android:text="Submit"></Button>
+</LinearLayout>

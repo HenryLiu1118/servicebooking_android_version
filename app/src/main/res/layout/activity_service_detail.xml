@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:id="@+id/linearLayout"
+    tools:context=".ServiceProvide.ServiceDetailActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Title"
+            android:textSize="20dp"></TextView>
+
+        <Button
+            android:id="@+id/bt_edit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="3"
+            android:onClick="onEditService"
+            android:text="Edit"
+            android:textAllCaps="false"></Button>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <TextView
+            android:id="@+id/tv_name"
+            android:text="Name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"></TextView>
+        <TextView
+            android:id="@+id/tv_price"
+            android:text="Price"
+            android:layout_weight="7"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"></TextView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tv_info"
+        android:text="Info"
+        android:textSize="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"></TextView>
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:id="@+id/tv_location"
+        android:text="Location"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"></TextView>
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:id="@+id/tv_phone"
+        android:text="Phone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"></TextView>
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:id="@+id/tv_language"
+        android:text="Language"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"></TextView>
+</LinearLayout>

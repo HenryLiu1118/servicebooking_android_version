@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:id="@+id/linearLayout"
+    tools:context=".DashBoard.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/image"
+        android:layout_width="230dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp" >
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number: "
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location: "
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_requests"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@android:color/holo_green_light"
+        android:onClick="onRequests"
+        android:textAllCaps="false"
+        android:text="Requests"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/bt_services"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@color/colorPrimary"
+        android:onClick="onService"
+        android:textAllCaps="false"
+        android:text="Services"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_roles"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@null"
+        android:text="Roles"
+        android:textAllCaps="false"
+        android:onClick="onRoles"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/btn_languages"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@null"
+        android:text="Languages"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="15dp"
+        android:onClick="onLanguages"
+        tools:ignore="SpUsage" />
+
+    <Button
+        android:id="@+id/btn_servicetypes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@null"
+        android:text="Service Types"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="15dp"
+        android:onClick="onServiceTypes"
+        tools:ignore="SpUsage" />
+
+    <Button
+        android:id="@+id/btn_users"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@null"
+        android:text="Users"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="15dp"
+        android:onClick="onUsers"
+        tools:ignore="SpUsage" />
+</LinearLayout>

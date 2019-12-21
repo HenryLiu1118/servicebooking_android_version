@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="36dp"
+    android:id="@+id/linearLayout"
+    tools:context=".ServiceProvide.ServiceMainActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Language"></TextView>
+    <Spinner
+        android:id="@+id/sp_langauge"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"></Spinner>
+
+    <TextView
+        android:id="@+id/tv_serviceType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service Type"></TextView>
+    <Spinner
+        android:layout_marginTop="15dp"
+        android:id="@+id/sp_serviceType"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"></Spinner>
+
+    <Button
+        android:id="@+id/bt_service"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dip"
+        android:background="@android:color/holo_green_light"
+        android:onClick="onService"
+        android:textAllCaps="false"
+        android:text="Requests List"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

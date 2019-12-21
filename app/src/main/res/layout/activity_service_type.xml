@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Admin.ServiceTypeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="#F3B24F"
+        android:gravity="center"
+        android:text="List of Roles"
+        android:textColor="@color/colorPrimary" />
+
+    <ListView
+        android:id="@+id/LV"
+        android:layout_weight="75"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></ListView>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/ed_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="Enter the Language Name"
+            android:layout_weight="2"></EditText>
+        .
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="submit"
+            android:onClick="onAddServiceType"
+            android:layout_weight="1"></Button>
+    </LinearLayout>
+</LinearLayout>

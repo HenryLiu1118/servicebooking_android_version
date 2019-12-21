@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.servicebookingandroid">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Request.Comment.CommentFormActivity"></activity>
+        <activity android:name=".Request.Comment.CommentsActivity" />
+        <activity android:name=".ServiceProvide.ServiceFormActivity" />
+        <activity android:name=".ServiceProvide.ServiceDetailActivity" />
+        <activity android:name=".ServiceProvide.ServiceListActivity" />
+        <activity android:name=".ServiceProvide.ServiceMainActivity" />
+        <activity android:name=".Request.RequestFormActivity" />
+        <activity android:name=".Request.RequestDetailActivity" />
+        <activity android:name=".Request.RequestListActivity" />
+        <activity android:name=".Request.RequestMainActivity" />
+        <activity android:name=".Admin.UserListActivity" />
+        <activity android:name=".Admin.ServiceTypeActivity" />
+        <activity android:name=".Admin.LanguageListActivity" />
+        <activity android:name=".Admin.RoleListActivity" />
+        <activity android:name=".DashBoard.EditProfileActivity" />
+        <activity android:name=".DashBoard.MainActivity" />
+        <activity android:name=".Auth.SignUpActivity" />
+        <activity android:name=".Auth.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
