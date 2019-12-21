@@ -1,8 +1,12 @@
 package com.example.servicebookingandroid.Auth;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -46,6 +50,7 @@ public class LoginActivity extends AuthBaseActivity {
 
         LoginRequest userRequest = new LoginRequest(usernmae, password);
 
+
         Call<JWTLoginSucessReponse> call = authService.login(userRequest);
 
         call.enqueue(new Callback<JWTLoginSucessReponse>() {
@@ -60,14 +65,12 @@ public class LoginActivity extends AuthBaseActivity {
 
                 token = jwtLoginSucessReponse.getToken();
                 user = jwtLoginSucessReponse.getUser();
-
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
 
             @Override
             public void onFailure(Call<JWTLoginSucessReponse> call, Throwable t) {
-
             }
         });
     }
@@ -80,5 +83,4 @@ public class LoginActivity extends AuthBaseActivity {
     protected void onStart() {
         super.onStart();
     }
-
 }
