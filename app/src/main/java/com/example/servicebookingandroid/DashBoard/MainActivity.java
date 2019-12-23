@@ -151,6 +151,8 @@ public class MainActivity extends DashBoardBaseActivity {
                         RequestBaseActivity.clearRequestData();
                         //ServiceProvideService
                         ServiceBaseActivity.clearServiceData();
+                        //Base
+                        clearBaseData();
                         CheckUserToken();
                     }
                 });

@@ -64,7 +64,15 @@ public class EditProfileActivity extends DashBoardBaseActivity {
     }
 
     public void setLanguageSpiner() {
-        Call<List<Language>> call = AuthBaseActivity.authService.getLanguages();
+        List<String> languageNames = new ArrayList<>();
+        languageNames.add("");
+        languageNames.addAll(Baselanguages);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, languageNames);
+        sp_language.setAdapter(arrayAdapter);
+        int selectedPosition = arrayAdapter.getPosition(AuthBaseActivity.user.getLanguage());
+        sp_language.setSelection(selectedPosition);
+        /*
+        Call<List<Language>> call = baseService.getLanguages();
         call.enqueue(new Callback<List<Language>>() {
             @Override
             public void onResponse(Call<List<Language>> call, Response<List<Language>> response) {
@@ -91,6 +99,7 @@ public class EditProfileActivity extends DashBoardBaseActivity {
 
             }
         });
+         */
     }
 
     public void onEditProfile(View view) {

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -45,22 +46,35 @@ public class RequestFormActivity extends RequestBaseActivity {
         tv_title = findViewById(R.id.tv_title);
         sp_serviceType = findViewById(R.id.sp_serviceType);
         ed_text = findViewById(R.id.ed_text);
-        setServiceTypeSpiner();
     }
 
     public void initValue() {
         Intent intent = getIntent();
         Integer i = intent.getIntExtra("index", -1);
-        if (i == -1) return;
+        if (i == -1) {
+            setServiceTypeSpiner();
+            return;
+        }
         index = i;
         editMode = true;
         tv_title.setText("Update Request");
         ed_text.setText(requestDtoList.get(index).getInfo());
+        setServiceTypeSpiner();
     }
 
     public void setServiceTypeSpiner() {
-        Call<List<ServiceType>> call = AuthBaseActivity.authService.getServiceTypes();
+        List<String> ServiceTypeNames = new ArrayList<>();
+        ServiceTypeNames.add("");
+        ServiceTypeNames.addAll(BaseserviceTypes);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, ServiceTypeNames);
+        sp_serviceType.setAdapter(arrayAdapter);
+        if (editMode){
+            int selectedPosition = arrayAdapter.getPosition(requestDtoList.get(index).getServicetype());
+            sp_serviceType.setSelection(selectedPosition);
+        }
 
+/*
+        Call<List<ServiceType>> call = baseService.getServiceTypes();
         call.enqueue(new Callback<List<ServiceType>>() {
             @Override
             public void onResponse(Call<List<ServiceType>> call, Response<List<ServiceType>> response) {
@@ -89,6 +103,7 @@ public class RequestFormActivity extends RequestBaseActivity {
 
             }
         });
+*/
     }
 
     public void onSubmit(View view) {

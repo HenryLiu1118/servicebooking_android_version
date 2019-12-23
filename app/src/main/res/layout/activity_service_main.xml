@@ -46,7 +46,7 @@
         android:background="@android:color/holo_green_light"
         android:onClick="onService"
         android:textAllCaps="false"
-        android:text="Requests List"
+        android:text="Services List"
         android:textColor="@android:color/black" />
 
 </LinearLayout>

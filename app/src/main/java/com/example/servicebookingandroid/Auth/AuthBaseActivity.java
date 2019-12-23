@@ -21,7 +21,8 @@ public class AuthBaseActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (user != null) {
+        initDada();
+        if (isDataSetted() && user != null) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }

@@ -65,8 +65,11 @@ public class LoginActivity extends AuthBaseActivity {
 
                 token = jwtLoginSucessReponse.getToken();
                 user = jwtLoginSucessReponse.getUser();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+
+                if (isDataSetted()) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                }
             }
 
             @Override

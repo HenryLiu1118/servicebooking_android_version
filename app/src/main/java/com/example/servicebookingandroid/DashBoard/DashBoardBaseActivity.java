@@ -9,16 +9,10 @@ import com.example.servicebookingandroid.BaseActivity;
 
 public class DashBoardBaseActivity extends BaseActivity {
 
-    public void CheckUserToken() {
-        if (AuthBaseActivity.user == null) {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
         CheckUserToken();
+        checkDataSetted();
     }
 }

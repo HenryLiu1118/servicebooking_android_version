@@ -30,7 +30,6 @@ public class RequestMainActivity extends RequestBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_main);
-        initView();
     }
 
     public void initView() {
@@ -70,7 +69,14 @@ public class RequestMainActivity extends RequestBaseActivity {
     }
 
     public void  setServiceTypeSpiner() {
-        Call<List<ServiceType>> call = AuthBaseActivity.authService.getServiceTypes();
+        List<String> ServiceTypeNames = new ArrayList<>();
+        ServiceTypeNames.add("All");
+        ServiceTypeNames.addAll(BaseserviceTypes);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, ServiceTypeNames);
+        sp_serviceType.setAdapter(arrayAdapter);
+
+        /*
+        Call<List<ServiceType>> call = baseService.getServiceTypes();
 
         call.enqueue(new Callback<List<ServiceType>>() {
             @Override
@@ -96,10 +102,18 @@ public class RequestMainActivity extends RequestBaseActivity {
 
             }
         });
+
+         */
     }
 
     public void setLanguageSpiner() {
-        Call<List<Language>> call = AuthBaseActivity.authService.getLanguages();
+        List<String> languageNames = new ArrayList<>();
+        languageNames.add("All");
+        languageNames.addAll(Baselanguages);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, languageNames);
+        sp_language.setAdapter(arrayAdapter);
+        /*
+        Call<List<Language>> call =baseService.getLanguages();
         call.enqueue(new Callback<List<Language>>() {
             @Override
             public void onResponse(Call<List<Language>> call, Response<List<Language>> response) {
@@ -124,10 +138,12 @@ public class RequestMainActivity extends RequestBaseActivity {
 
             }
         });
+         */
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        initView();
     }
 }

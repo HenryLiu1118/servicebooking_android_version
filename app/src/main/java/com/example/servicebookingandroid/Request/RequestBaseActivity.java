@@ -29,16 +29,10 @@ public class RequestBaseActivity extends BaseActivity {
         selectedServiceType = "All";
     }
 
-    public void CheckUserToken() {
-        if (AuthBaseActivity.user == null) {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
         CheckUserToken();
+        checkDataSetted();
     }
 }

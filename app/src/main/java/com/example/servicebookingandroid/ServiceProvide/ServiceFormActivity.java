@@ -53,8 +53,17 @@ public class ServiceFormActivity extends ServiceBaseActivity {
     }
 
     public void setServiceTypeSpiner() {
-        Call<List<ServiceType>> call = AuthBaseActivity.authService.getServiceTypes();
-
+        List<String> ServiceTypeNames = new ArrayList<>();
+        ServiceTypeNames.add("");
+        ServiceTypeNames.addAll(BaseserviceTypes);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, ServiceTypeNames);
+        sp_serviceType.setAdapter(arrayAdapter);
+        if (myService != null){
+            int selectedPosition = arrayAdapter.getPosition(myService.getServicetype());
+            sp_serviceType.setSelection(selectedPosition);
+        }
+        /*
+        Call<List<ServiceType>> call = baseService.getServiceTypes();
         call.enqueue(new Callback<List<ServiceType>>() {
             @Override
             public void onResponse(Call<List<ServiceType>> call, Response<List<ServiceType>> response) {
@@ -83,6 +92,7 @@ public class ServiceFormActivity extends ServiceBaseActivity {
 
             }
         });
+         */
     }
 
     public void onSubmit(View view) {

@@ -53,7 +53,13 @@ public class SignUpActivity extends AuthBaseActivity {
     }
 
     public void setRoleSpiner() {
-        Call<List<Role>> call = authService.getRoles();
+        List<String> roleNames = new ArrayList<>();
+        roleNames.add("");
+        roleNames.addAll(Baseroles);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, roleNames);
+        sp_role.setAdapter(arrayAdapter);
+        /*
+        Call<List<Role>> call = baseService.getRoles();
         call.enqueue(new Callback<List<Role>>() {
             @Override
             public void onResponse(Call<List<Role>> call, Response<List<Role>> response) {
@@ -78,10 +84,17 @@ public class SignUpActivity extends AuthBaseActivity {
 
             }
         });
+         */
     }
 
     public void setLanguageSpiner() {
-        Call<List<Language>> call = authService.getLanguages();
+        List<String> languageNames = new ArrayList<>();
+        languageNames.add("");
+        languageNames.addAll(Baselanguages);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, languageNames);
+        sp_language.setAdapter(arrayAdapter);
+        /*
+        Call<List<Language>> call = baseService.getLanguages();
         call.enqueue(new Callback<List<Language>>() {
             @Override
             public void onResponse(Call<List<Language>> call, Response<List<Language>> response) {
@@ -106,6 +119,7 @@ public class SignUpActivity extends AuthBaseActivity {
 
             }
         });
+         */
     }
 
     public void onSignup(View view) {

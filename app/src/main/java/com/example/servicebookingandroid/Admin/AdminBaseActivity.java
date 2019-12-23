@@ -22,16 +22,10 @@ public class AdminBaseActivity extends BaseActivity {
     public static List<Language> languages = new ArrayList<>();
     public static List<UserDto> users = new ArrayList<>();
 
-    public void CheckUserToken() {
-        if (AuthBaseActivity.user == null) {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
         CheckUserToken();
+        checkDataSetted();
     }
 }
