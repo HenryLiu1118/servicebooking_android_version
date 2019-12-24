@@ -1,7 +1,9 @@
 package com.example.servicebookingandroid.Admin;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -26,6 +28,7 @@ public class LanguageListActivity extends AdminBaseActivity {
     EditText editText;
     List<String> languageNames;
     ArrayAdapter<String> arrayAdapter;
+    public View ftView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,12 @@ public class LanguageListActivity extends AdminBaseActivity {
         listView=findViewById(R.id.LV);
         editText = findViewById(R.id.ed_text);
         languageNames = new ArrayList<>();
+
         arrayAdapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_item, languageNames);
+        listView.setAdapter(arrayAdapter);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
+        listView.addFooterView(ftView);
 
         Call<List<Language>> call = adminService.getLanguages(AuthBaseActivity.token);
 
@@ -59,7 +67,7 @@ public class LanguageListActivity extends AdminBaseActivity {
                 }
 
                 arrayAdapter.notifyDataSetChanged();
-                //listView.setAdapter(arrayAdapter);
+                listView.removeFooterView(ftView);
             }
 
             @Override
@@ -68,10 +76,11 @@ public class LanguageListActivity extends AdminBaseActivity {
             }
         });
 
-        listView.setAdapter(arrayAdapter);
+
     }
 
     public void onAddLanguage(View view) {
+        listView.addFooterView(ftView);
         String newLangauge = editText.getText().toString();
         if(TextUtils.isEmpty(newLangauge)){
             Toast.makeText(getApplicationContext(),"Enter Language",Toast.LENGTH_SHORT).show();
@@ -83,6 +92,7 @@ public class LanguageListActivity extends AdminBaseActivity {
         call.enqueue(new Callback<Language>() {
             @Override
             public void onResponse(Call<Language> call, Response<Language> response) {
+                listView.removeFooterView(ftView);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),"Duplicated Language",Toast.LENGTH_SHORT).show();
                     editText.setText("");

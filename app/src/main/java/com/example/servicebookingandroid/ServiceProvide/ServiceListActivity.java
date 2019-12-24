@@ -2,7 +2,9 @@ package com.example.servicebookingandroid.ServiceProvide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -28,11 +30,12 @@ public class ServiceListActivity extends ServiceBaseActivity {
     final int limit = 3;
     int size;
 
+    public View ftView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_list);
-        initView();
     }
 
     public void initView() {
@@ -40,8 +43,12 @@ public class ServiceListActivity extends ServiceBaseActivity {
         tv_listView = findViewById(R.id.tv_listView);
         bt_prev = findViewById(R.id.bt_pre);
         bt_next = findViewById(R.id.bt_next);
+
         serviceAdapter = new ServiceAdapter(this, R.layout.list_view_service_item, serviceDtos);
         listView.setAdapter(serviceAdapter);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
+
         page = 0;
         size = 0;
         callAPI();
@@ -76,6 +83,7 @@ public class ServiceListActivity extends ServiceBaseActivity {
     }
 
     public void callAPI() {
+        listView.addFooterView(ftView);
         String token = AuthBaseActivity.token;
 
         Call<ServicesResponse> call = serviceProvideService.getServices(page, limit, token);
@@ -102,6 +110,8 @@ public class ServiceListActivity extends ServiceBaseActivity {
                 size = response.body().getSize();
                 setButton();
                 tv_listView.setText("List of Services: " + size + " total");
+
+                listView.removeFooterView(ftView);
             }
 
             @Override
@@ -114,5 +124,6 @@ public class ServiceListActivity extends ServiceBaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        initView();
     }
 }

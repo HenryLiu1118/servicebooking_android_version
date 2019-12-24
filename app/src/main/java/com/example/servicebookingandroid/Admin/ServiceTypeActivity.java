@@ -1,9 +1,11 @@
 package com.example.servicebookingandroid.Admin;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -29,6 +31,7 @@ public class ServiceTypeActivity extends AdminBaseActivity {
     EditText editText;
     List<String> serviceTypeNames;
     ArrayAdapter<String> arrayAdapter;
+    public View ftView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,12 @@ public class ServiceTypeActivity extends AdminBaseActivity {
         listView=findViewById(R.id.LV);
         editText = findViewById(R.id.ed_text);
         serviceTypeNames = new ArrayList<>();
+
         arrayAdapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_item, serviceTypeNames);
+        listView.setAdapter(arrayAdapter);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
+        listView.addFooterView(ftView);
 
         Call<List<ServiceType>> call = adminService.getServiceTypes(AuthBaseActivity.token);
 
@@ -61,6 +69,7 @@ public class ServiceTypeActivity extends AdminBaseActivity {
                     serviceTypeNames.add(serviceType.getName());
                 }
 
+                listView.removeFooterView(ftView);
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -69,11 +78,10 @@ public class ServiceTypeActivity extends AdminBaseActivity {
 
             }
         });
-
-        listView.setAdapter(arrayAdapter);
     }
 
     public void onAddServiceType(View view) {
+        listView.addFooterView(ftView);
         String newServiceType = editText.getText().toString();
         if(TextUtils.isEmpty(newServiceType)){
             Toast.makeText(getApplicationContext(),"Enter Service Type",Toast.LENGTH_SHORT).show();
@@ -85,6 +93,7 @@ public class ServiceTypeActivity extends AdminBaseActivity {
         call.enqueue(new Callback<ServiceType>() {
             @Override
             public void onResponse(Call<ServiceType> call, Response<ServiceType> response) {
+                listView.removeFooterView(ftView);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),"Duplicated Service Type",Toast.LENGTH_SHORT).show();
                     editText.setText("");

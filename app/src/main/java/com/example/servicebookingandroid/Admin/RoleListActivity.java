@@ -2,9 +2,11 @@ package com.example.servicebookingandroid.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -31,6 +33,7 @@ public class RoleListActivity extends AdminBaseActivity {
     EditText editText;
     List<String> roleNames;
     ArrayAdapter<String> arrayAdapter;
+    public View ftView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,12 @@ public class RoleListActivity extends AdminBaseActivity {
         listView=findViewById(R.id.LV);
         editText = findViewById(R.id.ed_text);
         roleNames = new ArrayList<>();
+
         arrayAdapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_item, roleNames);
+        listView.setAdapter(arrayAdapter);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
+        listView.addFooterView(ftView);
 
         Call<List<Role>> call = adminService.getRoles(AuthBaseActivity.token);
 
@@ -62,6 +70,7 @@ public class RoleListActivity extends AdminBaseActivity {
                     roleNames.add(role.getName());
                 }
 
+                listView.removeFooterView(ftView);
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -70,11 +79,10 @@ public class RoleListActivity extends AdminBaseActivity {
 
             }
         });
-
-        listView.setAdapter(arrayAdapter);
     }
 
     public void onAddRole(View view) {
+        listView.addFooterView(ftView);
         String newRole = editText.getText().toString();
         if(TextUtils.isEmpty(newRole)){
             Toast.makeText(getApplicationContext(),"Enter Role",Toast.LENGTH_SHORT).show();
@@ -86,6 +94,7 @@ public class RoleListActivity extends AdminBaseActivity {
         call.enqueue(new Callback<Role>() {
             @Override
             public void onResponse(Call<Role> call, Response<Role> response) {
+                listView.removeFooterView(ftView);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),"Duplicated Role",Toast.LENGTH_SHORT).show();
                     editText.setText("");

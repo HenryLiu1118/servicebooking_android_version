@@ -2,13 +2,16 @@ package com.example.servicebookingandroid.Request;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +37,9 @@ public class RequestFormActivity extends RequestBaseActivity {
     Spinner sp_serviceType;
     EditText ed_text;
 
+    LinearLayout linearLayout;
+    public View ftView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,10 @@ public class RequestFormActivity extends RequestBaseActivity {
         tv_title = findViewById(R.id.tv_title);
         sp_serviceType = findViewById(R.id.sp_serviceType);
         ed_text = findViewById(R.id.ed_text);
+
+        linearLayout = findViewById(R.id.linearLayout);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
     }
 
     public void initValue() {
@@ -120,6 +130,7 @@ public class RequestFormActivity extends RequestBaseActivity {
             return;
         }
 
+        linearLayout.addView(ftView);
         RequestOrderRequest requestOrderRequest = new RequestOrderRequest(serviceType, info);
         String token = AuthBaseActivity.token;
 
@@ -133,6 +144,7 @@ public class RequestFormActivity extends RequestBaseActivity {
         call.enqueue(new Callback<RequestDto>() {
             @Override
             public void onResponse(Call<RequestDto> call, Response<RequestDto> response) {
+                linearLayout.removeView(ftView);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),"Server Error",Toast.LENGTH_SHORT).show();
                     return;

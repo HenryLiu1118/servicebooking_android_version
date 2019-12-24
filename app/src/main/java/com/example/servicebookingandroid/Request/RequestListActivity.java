@@ -1,7 +1,9 @@
 package com.example.servicebookingandroid.Request;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -25,6 +27,7 @@ public class RequestListActivity extends RequestBaseActivity {
     int page;
     final int limit = 3;
     int size;
+    public View ftView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,12 @@ public class RequestListActivity extends RequestBaseActivity {
         tv_listView = findViewById(R.id.tv_listView);
         bt_prev = findViewById(R.id.bt_pre);
         bt_next = findViewById(R.id.bt_next);
+
         requestsAdapter = new RequestsAdapter(this, R.layout.list_view_request_item, requestDtoList);
         listView.setAdapter(requestsAdapter);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
+
         page = 0;
         size = 0;
         callAPI();
@@ -73,6 +80,8 @@ public class RequestListActivity extends RequestBaseActivity {
     }
 
     public void callAPI() {
+        listView.addFooterView(ftView);
+
         String role = AuthBaseActivity.user.getRole();
         String token = AuthBaseActivity.token;
 
@@ -106,6 +115,8 @@ public class RequestListActivity extends RequestBaseActivity {
                 size = response.body().getSize();
                 setButton();
                 tv_listView.setText("List of Requests: " + size + " total");
+
+                listView.removeFooterView(ftView);
             }
 
             @Override

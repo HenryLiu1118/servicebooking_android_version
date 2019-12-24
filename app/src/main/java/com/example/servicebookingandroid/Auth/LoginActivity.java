@@ -7,8 +7,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.servicebookingandroid.DashBoard.MainActivity;
@@ -23,6 +25,8 @@ import retrofit2.Response;
 public class LoginActivity extends AuthBaseActivity {
 
     private EditText ed_email, ed_password;
+    LinearLayout linearLayout;
+    public View ftView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,9 @@ public class LoginActivity extends AuthBaseActivity {
 
         ed_email=(EditText)findViewById(R.id.Email);
         ed_password=(EditText)findViewById(R.id.Password);
+        linearLayout = findViewById(R.id.linearLayout);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
 
     }
 
@@ -49,13 +56,14 @@ public class LoginActivity extends AuthBaseActivity {
         }
 
         LoginRequest userRequest = new LoginRequest(usernmae, password);
-
+        linearLayout.addView(ftView);
 
         Call<JWTLoginSucessReponse> call = authService.login(userRequest);
 
         call.enqueue(new Callback<JWTLoginSucessReponse>() {
             @Override
             public void onResponse(Call<JWTLoginSucessReponse> call, Response<JWTLoginSucessReponse> response) {
+                linearLayout.removeView(ftView);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_SHORT).show();
                     return;

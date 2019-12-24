@@ -2,11 +2,14 @@ package com.example.servicebookingandroid.ServiceProvide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,9 @@ public class ServiceFormActivity extends ServiceBaseActivity {
     Spinner sp_serviceType;
     EditText ed_text, ed_price;
 
+    LinearLayout linearLayout;
+    public View ftView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,11 @@ public class ServiceFormActivity extends ServiceBaseActivity {
         sp_serviceType = findViewById(R.id.sp_serviceType);
         ed_text = findViewById(R.id.ed_text);
         ed_price = findViewById(R.id.ed_price);
+
+        linearLayout = findViewById(R.id.linearLayout);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
+
         setServiceTypeSpiner();
     }
 
@@ -117,12 +128,14 @@ public class ServiceFormActivity extends ServiceBaseActivity {
 
         ServiceProvideRequest serviceProvideRequest = new ServiceProvideRequest(info, price, serviceType);
         String token = AuthBaseActivity.token;
+        linearLayout.addView(ftView);
 
         Call<ServiceDto> call = serviceProvideService.updateService(token, serviceProvideRequest);
 
         call.enqueue(new Callback<ServiceDto>() {
             @Override
             public void onResponse(Call<ServiceDto> call, Response<ServiceDto> response) {
+                linearLayout.removeView(ftView);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),"Server Error",Toast.LENGTH_SHORT).show();
                     return;

@@ -1,11 +1,14 @@
 package com.example.servicebookingandroid.Auth;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,6 +30,8 @@ public class SignUpActivity extends AuthBaseActivity {
 
     private EditText ed_username,ed_password, ed_firstname, ed_lastname, ed_streetname, ed_city, ed_state, ed_zipcode, ed_phone;
     Spinner sp_role, sp_language;
+    LinearLayout linearLayout;
+    public View ftView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,10 @@ public class SignUpActivity extends AuthBaseActivity {
         sp_language = (Spinner) findViewById(R.id.language);
         setRoleSpiner();
         setLanguageSpiner();
+
+        linearLayout = findViewById(R.id.linearLayout);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
     }
 
     public void setRoleSpiner() {
@@ -191,12 +200,14 @@ public class SignUpActivity extends AuthBaseActivity {
             return;
         }
 
+        linearLayout.addView(ftView);
         SignUpRequest signUpRequest = new SignUpRequest(usernmae, password, firstname, lastname, streetname, city, state, zipcode, phone, role, langauge);
 
         Call<String> call = authService.register(signUpRequest);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                linearLayout.removeView(ftView);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(),"This email has already registered",Toast.LENGTH_SHORT).show();
                     finish();

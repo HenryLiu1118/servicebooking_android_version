@@ -2,8 +2,11 @@ package com.example.servicebookingandroid.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ public class UserListActivity extends AdminBaseActivity {
 
     ListView listView;
     UserAdapter userAdapter;
+    public View ftView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,9 @@ public class UserListActivity extends AdminBaseActivity {
         listView=findViewById(R.id.LV);
         userAdapter = new UserAdapter(this, R.layout.list_view_user_item, users);
         listView.setAdapter(userAdapter);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
+        listView.addFooterView(ftView);
 
         Call<List<UserDto>> call = adminService.getUsers(AuthBaseActivity.token);
 
@@ -48,6 +55,7 @@ public class UserListActivity extends AdminBaseActivity {
                 users.clear();
                 users.addAll(response.body());
                 userAdapter.notifyDataSetChanged();
+                listView.removeFooterView(ftView);
             }
 
             @Override

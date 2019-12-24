@@ -1,11 +1,14 @@
 package com.example.servicebookingandroid.DashBoard;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,6 +29,9 @@ public class EditProfileActivity extends DashBoardBaseActivity {
 
     private EditText ed_firstname, ed_lastname, ed_streetname, ed_city, ed_state, ed_zipcode, ed_phone;
     Spinner sp_language;
+    LinearLayout linearLayout;
+    public View ftView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,10 @@ public class EditProfileActivity extends DashBoardBaseActivity {
 
         setLanguageSpiner();
         setProfileData();
+
+        linearLayout = findViewById(R.id.linearLayout);
+        final LayoutInflater li=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ftView=li.inflate(R.layout.foot_view,null);
     }
 
     public void setProfileData() {
@@ -152,12 +162,14 @@ public class EditProfileActivity extends DashBoardBaseActivity {
             return;
         }
 
+        linearLayout.addView(ftView);
         UserInfoUpdateRequest userInfoUpdateRequest = new UserInfoUpdateRequest(firstname, lastname, streetname, city, state, zipcode, phone, language);
         Call<UserDto> call = AuthBaseActivity.authService.updateUserInfo(AuthBaseActivity.token, userInfoUpdateRequest);
 
         call.enqueue(new Callback<UserDto>() {
             @Override
             public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+                linearLayout.removeView(ftView);
                 if (!response.isSuccessful()) {
                     return;
                 }
