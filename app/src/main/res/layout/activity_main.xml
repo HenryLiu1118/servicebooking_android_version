@@ -54,7 +54,7 @@
         android:textColor="@android:color/black" />
 
     <Button
-        android:id="@+id/bt_services"
+        android:id="@+id/bt_service"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
@@ -65,7 +65,7 @@
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/btn_roles"
+        android:id="@+id/bt_roles"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
@@ -76,7 +76,7 @@
         android:textColor="@android:color/holo_red_dark" />
 
     <Button
-        android:id="@+id/btn_languages"
+        android:id="@+id/bt_languages"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
@@ -89,7 +89,7 @@
         tools:ignore="SpUsage" />
 
     <Button
-        android:id="@+id/btn_servicetypes"
+        android:id="@+id/bt_serviceType"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
@@ -102,7 +102,7 @@
         tools:ignore="SpUsage" />
 
     <Button
-        android:id="@+id/btn_users"
+        android:id="@+id/bt_users"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"

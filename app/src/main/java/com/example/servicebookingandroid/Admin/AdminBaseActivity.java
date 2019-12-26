@@ -1,9 +1,5 @@
 package com.example.servicebookingandroid.Admin;
 
-import android.content.Intent;
-
-import com.example.servicebookingandroid.Auth.AuthBaseActivity;
-import com.example.servicebookingandroid.Auth.LoginActivity;
 import com.example.servicebookingandroid.BaseActivity;
 import com.example.servicebookingandroid.Model.Language;
 import com.example.servicebookingandroid.Model.Role;

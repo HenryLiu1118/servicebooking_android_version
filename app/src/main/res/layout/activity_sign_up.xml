@@ -10,7 +10,7 @@
     tools:context=".Auth.SignUpActivity">
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/ed_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
@@ -18,7 +18,7 @@
         android:maxLines="1" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/ed_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
@@ -33,14 +33,14 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
         <EditText
-            android:id="@+id/firstname"
+            android:id="@+id/ed_firstname"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="First Name"
             android:layout_weight="1" />
 
         <EditText
-            android:id="@+id/lastname"
+            android:id="@+id/ed_lastname"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Last Name"
@@ -50,7 +50,7 @@
 
 
     <EditText
-        android:id="@+id/streetname"
+        android:id="@+id/ed_streetname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -64,21 +64,21 @@
         android:maxLines="1"
         >
         <EditText
-            android:id="@+id/city"
+            android:id="@+id/ed_city"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="City"
             android:layout_weight="1" />
 
         <EditText
-            android:id="@+id/state"
+            android:id="@+id/ed_state"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="State"
             android:layout_weight="1" />
 
         <EditText
-            android:id="@+id/zipcode"
+            android:id="@+id/ed_zipcode"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Zip Code"
@@ -86,7 +86,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/ed_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -94,14 +94,14 @@
         android:maxLines="1" />
 
     <Spinner
-        android:id="@+id/role"
+        android:id="@+id/sp_role"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:maxLines="1"></Spinner>
 
     <Spinner
-        android:id="@+id/language"
+        android:id="@+id/sp_language"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="25dp"

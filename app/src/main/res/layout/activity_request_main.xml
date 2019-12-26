@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Language"></TextView>
     <Spinner
-        android:id="@+id/sp_langauge"
+        android:id="@+id/sp_language"
         android:layout_width="match_parent"
         android:layout_height="40dp"></Spinner>
 

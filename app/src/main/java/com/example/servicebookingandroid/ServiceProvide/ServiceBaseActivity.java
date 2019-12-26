@@ -1,9 +1,5 @@
 package com.example.servicebookingandroid.ServiceProvide;
 
-import android.content.Intent;
-
-import com.example.servicebookingandroid.Auth.AuthBaseActivity;
-import com.example.servicebookingandroid.Auth.LoginActivity;
 import com.example.servicebookingandroid.BaseActivity;
 import com.example.servicebookingandroid.Model.ServiceDto;
 import com.example.servicebookingandroid.Services.ServiceProvideService;
