@@ -14,7 +14,7 @@ var commentDtos: ArrayList<CommentDto> = ArrayList<CommentDto>()
 var selectedLanguage = "All"
 var selectedServiceType = "All"
 
-fun globalclearRequestData() {
+fun clearRequestData() {
     requestDtoList =ArrayList<RequestDto>()
     commentDtos = ArrayList<CommentDto>()
     selectedLanguage = "All"
@@ -22,13 +22,6 @@ fun globalclearRequestData() {
 }
 
 open class RequestBaseActivity2: BaseActivity() {
-    fun clearRequestData() {
-        requestDtoList =ArrayList<RequestDto>()
-        commentDtos = ArrayList<CommentDto>()
-        selectedLanguage = "All"
-        selectedServiceType = "All"
-    }
-
     override fun onStart() {
         super.onStart()
         CheckUserToken ()
