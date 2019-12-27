@@ -32,8 +32,8 @@ class CommentsActivity : RequestBaseActivity2() {
 
         val call = commentService.getCommentsByRequestId(requestId, token)
 
-        call.enqueue(object: Callback<MutableList<CommentDto>> {
-            override fun onResponse(call: Call<MutableList<CommentDto>>, response: Response<MutableList<CommentDto>>) {
+        call.enqueue(object: Callback<List<CommentDto>> {
+            override fun onResponse(call: Call<List<CommentDto>>, response: Response<List<CommentDto>>) {
                 if (!response.isSuccessful) {
                     Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
                     return
@@ -44,7 +44,7 @@ class CommentsActivity : RequestBaseActivity2() {
                 commentAdapter.notifyDataSetChanged()
             }
 
-            override fun onFailure(call: Call<MutableList<CommentDto>>, t: Throwable) {
+            override fun onFailure(call: Call<List<CommentDto>>, t: Throwable) {
 
             }
 
