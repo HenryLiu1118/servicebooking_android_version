@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Request.Comment.CommentFormActivity" />
+        <activity android:name=".Request.Comment.CommentFormActivity"></activity>
         <activity android:name=".Request.Comment.CommentsActivity" />
         <activity android:name=".ServiceProvide.ServiceFormActivity" />
         <activity android:name=".ServiceProvide.ServiceDetailActivity" />
@@ -21,7 +21,7 @@
         <activity android:name=".ServiceProvide.ServiceMainActivity" />
         <activity android:name=".Request.RequestFormActivity" />
         <activity android:name=".Request.RequestDetailActivity" />
-        <activity android:name=".Request.RequestListActivity"></activity>
+        <activity android:name=".Request.RequestListActivity" />
         <activity android:name=".Request.RequestMainActivity" />
         <activity android:name=".Admin.UserListActivity" />
         <activity android:name=".Admin.ServiceTypeActivity" />

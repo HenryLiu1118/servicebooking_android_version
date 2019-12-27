@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Request.Comment.CommentsActivity">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,7 +15,7 @@
         android:textColor="@color/colorPrimary" />
 
     <ListView
-        android:id="@+id/LV"
+        android:id="@+id/listView"
         android:layout_marginTop="10dp"
         android:layout_weight="85"
         android:layout_width="match_parent"

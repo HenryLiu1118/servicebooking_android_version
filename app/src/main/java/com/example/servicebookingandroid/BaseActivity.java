@@ -135,7 +135,6 @@ public class BaseActivity extends AppCompatActivity {
                 for (ServiceType serviceType : serviceTypes) {
                     BaseserviceTypes.add(serviceType.getName());
                 }
-                Log.i("henrylau1118", "ServiceType Size: " + BaseserviceTypes.size());
             }
 
             @Override

@@ -18,7 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class RequestFormActivity : RequestBaseActivity() {
+class RequestFormActivity : RequestBaseActivity2() {
 
     var index: Int = -1
     var editMode: Boolean = false
@@ -57,7 +57,7 @@ class RequestFormActivity : RequestBaseActivity() {
         val arrayAdapter = ArrayAdapter<String>(baseContext, android.R.layout.simple_spinner_item, ServiceTypeNames)
         sp_serviceType.adapter = arrayAdapter
         if (editMode) {
-            val selectedPosition = arrayAdapter.getPosition(RequestBaseActivity.requestDtoList[index].servicetype)
+            val selectedPosition = arrayAdapter.getPosition(requestDtoList[index].servicetype)
             sp_serviceType.setSelection(selectedPosition)
         }
     }
@@ -96,9 +96,9 @@ class RequestFormActivity : RequestBaseActivity() {
                 }
 
                 if (editMode) {
-                    requestDtoList[index] = response.body()
+                    requestDtoList[index] = response.body()!!
                 } else {
-                    requestDtoList.add(response.body())
+                    requestDtoList.add(response.body()!!)
                 }
                 finish()
             }

@@ -1,7 +1,5 @@
 package com.example.servicebookingandroid.ServiceProvide;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.servicebookingandroid.Auth.AuthBaseActivity;
-import com.example.servicebookingandroid.Model.Response.RequestsResponse;
 import com.example.servicebookingandroid.Model.Response.ServicesResponse;
 import com.example.servicebookingandroid.R;
 

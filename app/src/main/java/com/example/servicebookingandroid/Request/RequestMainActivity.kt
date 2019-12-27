@@ -34,8 +34,8 @@ class RequestMainActivity : AppCompatActivity() {
 
     fun onRequests(view: View) {
         if (AuthBaseActivity.user.role == "Service") {
-            RequestBaseActivity.selectedServiceType = sp_serviceType.selectedItem.toString()
-            RequestBaseActivity.selectedLanguage = sp_language.selectedItem.toString()
+            selectedServiceType = sp_serviceType.selectedItem.toString()
+            selectedLanguage = sp_language.selectedItem.toString()
         }
 
         startActivity(Intent(this, RequestListActivity::class.java))

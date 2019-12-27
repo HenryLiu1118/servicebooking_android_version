@@ -1,7 +1,5 @@
 package com.example.servicebookingandroid.Admin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +12,6 @@ import com.example.servicebookingandroid.Auth.AuthBaseActivity;
 import com.example.servicebookingandroid.Model.UserDto;
 import com.example.servicebookingandroid.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

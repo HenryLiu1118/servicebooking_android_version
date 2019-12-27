@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RequestListActivity : AppCompatActivity() {
+class RequestListActivity : RequestBaseActivity2() {
 
     lateinit var requestsAdapter: RequestsAdapter
     var page: Int = 0
@@ -28,7 +28,7 @@ class RequestListActivity : AppCompatActivity() {
     }
 
     fun initView() {
-        requestsAdapter = RequestsAdapter(this, R.layout.list_view_request_item, RequestBaseActivity.requestDtoList)
+        requestsAdapter = RequestsAdapter(this, R.layout.list_view_request_item, requestDtoList)
         listView.setAdapter(requestsAdapter)
         val li = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         ftView = li.inflate(R.layout.foot_view, null)
@@ -45,7 +45,7 @@ class RequestListActivity : AppCompatActivity() {
         setButton()
     }
 
-    fun onNext() {
+    fun onNext(view: View) {
         if (page >= Math.ceil(size.toDouble() / limit).toInt() - 1) return
         page++
         callAPI()
@@ -63,19 +63,19 @@ class RequestListActivity : AppCompatActivity() {
         val role = AuthBaseActivity.user.role
         val token = AuthBaseActivity.token
 
-        var call = RequestBaseActivity.requestService.getMyRequests(page, limit, token)
+        var call = requestService.getMyRequests(page, limit, token)
 
         if (role == "Customer") {
             //call = requestService.getMyRequests(page, limit,token);
         } else if (role == "Service") {
-            if (RequestBaseActivity.selectedLanguage != "All" && RequestBaseActivity.selectedServiceType != "All") {
-                call = RequestBaseActivity.requestService.getRequestByServiceTypeAndLanguage(RequestBaseActivity.selectedServiceType, RequestBaseActivity.selectedLanguage, page, limit, token)
-            } else if (RequestBaseActivity.selectedServiceType != "All") {
-                call = RequestBaseActivity.requestService.getRequestsByServiceType(RequestBaseActivity.selectedServiceType, page, limit, token)
-            } else if (RequestBaseActivity.selectedLanguage != "All") {
-                call = RequestBaseActivity.requestService.getRequestByLanguage(RequestBaseActivity.selectedLanguage, page, limit, token)
+            if (selectedLanguage != "All" && selectedServiceType != "All") {
+                call = requestService.getRequestByServiceTypeAndLanguage(selectedServiceType, selectedLanguage, page, limit, token)
+            } else if (selectedServiceType != "All") {
+                call = requestService.getRequestsByServiceType(selectedServiceType, page, limit, token)
+            } else if (selectedLanguage != "All") {
+                call = requestService.getRequestByLanguage(selectedLanguage, page, limit, token)
             } else {
-                call = RequestBaseActivity.requestService.getAllRequests(page, limit, token)
+                call = requestService.getAllRequests(page, limit, token)
             }
         }
 
@@ -86,8 +86,8 @@ class RequestListActivity : AppCompatActivity() {
                     return
                 }
 
-                RequestBaseActivity.requestDtoList.clear()
-                RequestBaseActivity.requestDtoList.addAll(response.body()!!.requestDtoList)
+                requestDtoList.clear()
+                requestDtoList.addAll(response.body()!!.requestDtoList)
                 requestsAdapter.notifyDataSetChanged()
                 size = response.body()!!.size
                 setButton()

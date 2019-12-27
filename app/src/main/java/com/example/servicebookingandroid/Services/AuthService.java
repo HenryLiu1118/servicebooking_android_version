@@ -7,8 +7,6 @@ import com.example.servicebookingandroid.Model.APIRequests.UserInfoUpdateRequest
 import com.example.servicebookingandroid.Model.Response.JWTLoginSucessReponse;
 import com.example.servicebookingandroid.Model.UserDto;
 
-import java.util.List;
-
 import retrofit2.*;
 import retrofit2.http.*;
 

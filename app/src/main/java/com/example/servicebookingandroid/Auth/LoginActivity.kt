@@ -58,10 +58,10 @@ class LoginActivity : AuthBaseActivity() {
                     return
                 }
 
-                var jwtLoginSucessReponse: JWTLoginSucessReponse? = response.body()
+                var jwtLoginSucessReponse: JWTLoginSucessReponse = response.body()!!
 
-                token = jwtLoginSucessReponse?.token
-                user = jwtLoginSucessReponse?.user
+                token = jwtLoginSucessReponse.token
+                user = jwtLoginSucessReponse.user
 
                 if (isDataSetted()) {
                     startActivity(Intent(applicationContext, MainActivity::class.java))

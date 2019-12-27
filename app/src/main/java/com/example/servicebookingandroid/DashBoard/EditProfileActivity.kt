@@ -41,7 +41,7 @@ class EditProfileActivity : DashBoardBaseActivity() {
             return
         }
 
-        var user:UserDto = AuthBaseActivity.user
+        var user: UserDto = AuthBaseActivity.user
         ed_firstname.setText(user.firstname)
         ed_lastname.setText(user.lastname)
         ed_streetname.setText(user.streetname)

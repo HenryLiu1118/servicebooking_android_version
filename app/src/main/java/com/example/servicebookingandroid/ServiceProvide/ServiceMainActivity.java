@@ -1,7 +1,5 @@
 package com.example.servicebookingandroid.ServiceProvide;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,20 +7,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.servicebookingandroid.Auth.AuthBaseActivity;
-import com.example.servicebookingandroid.Model.Language;
-import com.example.servicebookingandroid.Model.ServiceType;
-import com.example.servicebookingandroid.Model.UserDto;
 import com.example.servicebookingandroid.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ServiceMainActivity extends ServiceBaseActivity {
 
@@ -59,33 +48,6 @@ public class ServiceMainActivity extends ServiceBaseActivity {
         ServiceTypeNames.addAll(BaseserviceTypes);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, ServiceTypeNames);
         sp_serviceType.setAdapter(arrayAdapter);
-        /*
-        Call<List<ServiceType>> call = baseService.getServiceTypes();
-        call.enqueue(new Callback<List<ServiceType>>() {
-            @Override
-            public void onResponse(Call<List<ServiceType>> call, Response<List<ServiceType>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(),"Server Error",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                List<ServiceType> serviceTypes = response.body();
-                List<String> ServiceTypeNames = new ArrayList<>();
-                ServiceTypeNames.add("All");
-                for (ServiceType serviceType : serviceTypes) {
-                    ServiceTypeNames.add(serviceType.getName());
-                }
-
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, ServiceTypeNames);
-                sp_serviceType.setAdapter(arrayAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<ServiceType>> call, Throwable t) {
-
-            }
-        });
-         */
     }
 
     public void setLanguageSpiner() {

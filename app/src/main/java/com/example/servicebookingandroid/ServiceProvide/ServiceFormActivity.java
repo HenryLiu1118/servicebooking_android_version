@@ -1,7 +1,5 @@
 package com.example.servicebookingandroid.ServiceProvide;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,7 +15,6 @@ import android.widget.Toast;
 import com.example.servicebookingandroid.Auth.AuthBaseActivity;
 import com.example.servicebookingandroid.Model.APIRequests.ServiceProvideRequest;
 import com.example.servicebookingandroid.Model.ServiceDto;
-import com.example.servicebookingandroid.Model.ServiceType;
 import com.example.servicebookingandroid.R;
 
 import java.util.ArrayList;
@@ -73,37 +70,6 @@ public class ServiceFormActivity extends ServiceBaseActivity {
             int selectedPosition = arrayAdapter.getPosition(myService.getServicetype());
             sp_serviceType.setSelection(selectedPosition);
         }
-        /*
-        Call<List<ServiceType>> call = baseService.getServiceTypes();
-        call.enqueue(new Callback<List<ServiceType>>() {
-            @Override
-            public void onResponse(Call<List<ServiceType>> call, Response<List<ServiceType>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(),"Server Error",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                List<ServiceType> serviceTypes = response.body();
-                List<String> ServiceTypeNames = new ArrayList<>();
-                ServiceTypeNames.add("");
-                for (ServiceType serviceType : serviceTypes) {
-                    ServiceTypeNames.add(serviceType.getName());
-                }
-
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, ServiceTypeNames);
-                sp_serviceType.setAdapter(arrayAdapter);
-                if (myService != null){
-                    int selectedPosition = arrayAdapter.getPosition(myService.getServicetype());
-                    sp_serviceType.setSelection(selectedPosition);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<ServiceType>> call, Throwable t) {
-
-            }
-        });
-         */
     }
 
     public void onSubmit(View view) {

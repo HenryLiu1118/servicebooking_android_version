@@ -10,7 +10,7 @@ import com.example.servicebookingandroid.Request.Comment.CommentFormActivity
 import com.example.servicebookingandroid.Request.Comment.CommentsActivity
 import kotlinx.android.synthetic.main.activity_request_detail.*
 
-class RequestDetailActivity : RequestBaseActivity() {
+class RequestDetailActivity : RequestBaseActivity2() {
 
     var index: Int = -1
 

@@ -14,8 +14,8 @@ import com.example.servicebookingandroid.Admin.UserListActivity
 import com.example.servicebookingandroid.Auth.AuthBaseActivity
 import com.example.servicebookingandroid.Model.UserDto
 import com.example.servicebookingandroid.R
-import com.example.servicebookingandroid.Request.RequestBaseActivity
 import com.example.servicebookingandroid.Request.RequestMainActivity
+import com.example.servicebookingandroid.Request.globalclearRequestData
 import com.example.servicebookingandroid.ServiceProvide.ServiceBaseActivity
 import com.example.servicebookingandroid.ServiceProvide.ServiceDetailActivity
 import com.example.servicebookingandroid.ServiceProvide.ServiceMainActivity
@@ -114,7 +114,7 @@ class MainActivity : DashBoardBaseActivity() {
                     //authService
                     AuthBaseActivity.clearAuthData()
                     //RequestService
-                    RequestBaseActivity.clearRequestData()
+                    globalclearRequestData()
                     //ServiceProvideService
                     ServiceBaseActivity.clearServiceData()
                     //Base
